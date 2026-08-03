@@ -98,6 +98,14 @@ public class Product {
     this.brand = brand;
   }
 
+  /**
+   * Sets and validates the product category.
+   *
+   * <p>Ensures that the assigned category is not blank or comopsed only of whitespaces.
+   *
+   * @param category the category to be assigned to this product
+   * @throws IllegalArgumentException if the provided category is blank or null
+   */
   private void setCategory(@NonNull String category) {
     if (!StringUtils.hasText(category)) {
       throw new IllegalArgumentException("The product description must not be empty.");
