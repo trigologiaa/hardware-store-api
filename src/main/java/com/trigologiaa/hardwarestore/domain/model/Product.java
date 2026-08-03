@@ -1,6 +1,7 @@
 package com.trigologiaa.hardwarestore.domain.model;
 
-import com.trigologiaa.hardwarestore.domain.exception.NegativeCodeProductException;
+import org.jspecify.annotations.NonNull;
+import org.springframework.util.StringUtils;
 
 /**
  * Represents a product available in the hardware store.
@@ -33,7 +34,6 @@ public class Product {
    * @param price       the monetary price of the product
    * @param stock       the available quantity in inventory
    * @param description a brief description of the product features
-   * @throws NegativeCodeProductException if the provided code is less than zero
    */
   public Product(
           Integer code,
@@ -43,9 +43,9 @@ public class Product {
           Double price,
           Integer stock,
           String description
-  ) throws NegativeCodeProductException {
+  ) {
     this.setCode(code);
-    this.name = name;
+    this.setName(name);
     this.brand = brand;
     this.category = category;
     this.price = price;
@@ -59,12 +59,30 @@ public class Product {
    * <p>Ensures that the assigned code is a positive integer or zero
    *
    * @param code the code to be assigned to this product
-   * @throws NegativeCodeProductException if the code is negative
+   * @throws IllegalArgumentException if the code is negative or null
    */
   private void setCode(Integer code) {
+    if (code == null) {
+      throw new IllegalArgumentException("The product code must not be null");
+    }
     if (code < 0) {
-      throw new NegativeCodeProductException("The product code must not be negative.");
+      throw new IllegalArgumentException("The product code must not be negative.");
     }
     this.code = code;
+  }
+
+  /**
+   * Sets and validates the product name.
+   *
+   * <p>Ensures that the assigned name is not blank or composed only of whitespaces.
+   *
+   * @param name the name to be assigned to this product
+   * @throws IllegalArgumentException if the provided name is blank
+   */
+  private void setName(@NonNull String name) {
+    if (!StringUtils.hasText(name)) {
+      throw new IllegalArgumentException("The product name must not be empty");
+    }
+    this.name = name;
   }
 }

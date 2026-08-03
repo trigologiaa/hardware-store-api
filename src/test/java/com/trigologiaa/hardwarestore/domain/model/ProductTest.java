@@ -3,7 +3,6 @@ package com.trigologiaa.hardwarestore.domain.model;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.trigologiaa.hardwarestore.domain.exception.NegativeCodeProductException;
 import org.junit.jupiter.api.Test;
 
 class ProductTest {
@@ -15,7 +14,7 @@ class ProductTest {
 
   @Test
   void productWithArgumentsShouldBeCreatedCorrectly() {
-    Product fullProduct = new Product(
+    Product product = new Product(
             12345,
             "Hammer Drill",
             "DeWalt",
@@ -24,18 +23,45 @@ class ProductTest {
             25,
             "20V drill with lithium battery"
     );
-    assertNotNull(fullProduct, "The product initialized with arguments must not be null");
+    assertNotNull(product, "The product initialized with arguments must not be null");
   }
 
   @Test
   void productWithNegativeCodeShouldThrowAnException() {
-    assertThrows(NegativeCodeProductException.class, () -> new Product(
+    assertThrows(IllegalArgumentException.class, () -> new Product(
             -12345,
             "Hammer Drill",
             "DeWalt",
             "Power Tools",
             159.99,
             25,
-            "20V drill with lithium battery"));
+            "20V drill with lithium battery")
+    );
+  }
+
+  @Test
+  void productWithEmptyNameShouldThrownAnException() {
+    assertThrows(IllegalArgumentException.class, () -> new Product(
+            12345,
+            "",
+            "DeWalt",
+            "Power Tools",
+            159.99,
+            25,
+            "20V drill with lithium battery")
+    );
+  }
+
+  @Test
+  void productWithNullNameShouldThrownAnException() {
+    assertThrows(IllegalArgumentException.class, () -> new Product(
+            12345,
+            null,
+            "DeWalt",
+            "Power Tools",
+            159.99,
+            25,
+            "20V drill with lithium battery")
+    );
   }
 }
