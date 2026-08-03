@@ -47,7 +47,7 @@ public class Product {
     this.setCode(code);
     this.setName(name);
     this.setBrand(brand);
-    this.category = category;
+    this.setCategory(category);
     this.price = price;
     this.stock = stock;
     this.description = description;
@@ -96,5 +96,12 @@ public class Product {
       throw new IllegalArgumentException("The product brand must not be empty.");
     }
     this.brand = brand;
+  }
+
+  private void setCategory(@NonNull String category) {
+    if (!StringUtils.hasText(category)) {
+      throw new IllegalArgumentException("The product description must not be empty.");
+    }
+    this.category = category;
   }
 }

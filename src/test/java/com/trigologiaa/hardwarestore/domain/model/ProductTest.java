@@ -67,4 +67,18 @@ class ProductTest {
             )
     );
   }
+
+  @Test
+  void productWithEmptyCategoryShouldThrownAnException() {
+    assertThrows(IllegalArgumentException.class, () -> new Product(
+                    12345,
+                    "Hammer Drill",
+                    "DeWalt",
+                    "",
+                    159.99,
+                    25,
+                    "20V drill with lithium battery"
+            )
+    );
+  }
 }
