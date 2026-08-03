@@ -46,7 +46,7 @@ public class Product {
   ) {
     this.setCode(code);
     this.setName(name);
-    this.brand = brand;
+    this.setBrand(brand);
     this.category = category;
     this.price = price;
     this.stock = stock;
@@ -59,12 +59,9 @@ public class Product {
    * <p>Ensures that the assigned code is a positive integer or zero
    *
    * @param code the code to be assigned to this product
-   * @throws IllegalArgumentException if the code is negative or null
+   * @throws IllegalArgumentException if the code is negative
    */
-  private void setCode(Integer code) {
-    if (code == null) {
-      throw new IllegalArgumentException("The product code must not be null");
-    }
+  private void setCode(@NonNull Integer code) {
     if (code < 0) {
       throw new IllegalArgumentException("The product code must not be negative.");
     }
@@ -81,8 +78,15 @@ public class Product {
    */
   private void setName(@NonNull String name) {
     if (!StringUtils.hasText(name)) {
-      throw new IllegalArgumentException("The product name must not be empty");
+      throw new IllegalArgumentException("The product name must not be empty.");
     }
     this.name = name;
+  }
+
+  private void setBrand(@NonNull String brand) {
+    if (!StringUtils.hasText(brand)) {
+      throw new IllegalArgumentException("The product brand must not be empty.");
+    }
+    this.brand = brand;
   }
 }

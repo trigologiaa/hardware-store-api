@@ -29,39 +29,42 @@ class ProductTest {
   @Test
   void productWithNegativeCodeShouldThrowAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-            -12345,
-            "Hammer Drill",
-            "DeWalt",
-            "Power Tools",
-            159.99,
-            25,
-            "20V drill with lithium battery")
+                    -12345,
+                    "Hammer Drill",
+                    "DeWalt",
+                    "Power Tools",
+                    159.99,
+                    25,
+                    "20V drill with lithium battery"
+            )
     );
   }
 
   @Test
   void productWithEmptyNameShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-            12345,
-            "",
-            "DeWalt",
-            "Power Tools",
-            159.99,
-            25,
-            "20V drill with lithium battery")
+                    12345,
+                    "",
+                    "DeWalt",
+                    "Power Tools",
+                    159.99,
+                    25,
+                    "20V drill with lithium battery"
+            )
     );
   }
 
   @Test
-  void productWithNullNameShouldThrownAnException() {
+  void productWithEmptyBrandShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-            12345,
-            null,
-            "DeWalt",
-            "Power Tools",
-            159.99,
-            25,
-            "20V drill with lithium battery")
+                    12345,
+                    "Hammer Drill",
+                    "",
+                    "Power Tools",
+                    159.99,
+                    25,
+                    "20V drill with lithium battery"
+            )
     );
   }
 }
