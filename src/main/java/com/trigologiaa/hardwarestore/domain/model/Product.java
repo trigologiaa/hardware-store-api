@@ -83,6 +83,14 @@ public class Product {
     this.name = name;
   }
 
+  /**
+   * Sets and validates the product brand.
+   *
+   * <p>Ensures that the assigned brand is not blank or composed only of whitespaces.
+   *
+   * @param brand the brand to be assigned to this product
+   * @throws IllegalArgumentException if the provided brand is blank
+   */
   private void setBrand(@NonNull String brand) {
     if (!StringUtils.hasText(brand)) {
       throw new IllegalArgumentException("The product brand must not be empty.");
