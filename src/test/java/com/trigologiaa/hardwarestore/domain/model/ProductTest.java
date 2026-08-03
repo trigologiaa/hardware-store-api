@@ -6,6 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class ProductTest {
+  private static final Integer VALID_CODE = 12345;
+  private static final String VALID_NAME = "Hammer Drill";
+  private static final String VALID_BRAND = "DeWalt";
+  private static final String VALID_CATEGORY = "Power Tools";
+  private static final Double VALID_PRICE = 159.99;
+  private static final Integer VALID_STOCK = 25;
+  private static final String VALID_DESCRIPTION = "20V drill with lithium battery";
+
   @Test
   void productWithoutArgumentsShouldBeCreatedCorrectly() {
     Product product = new Product();
@@ -15,13 +23,13 @@ class ProductTest {
   @Test
   void productWithArgumentsShouldBeCreatedCorrectly() {
     Product product = new Product(
-            12345,
-            "Hammer Drill",
-            "DeWalt",
-            "Power Tools",
-            159.99,
-            25,
-            "20V drill with lithium battery"
+            VALID_CODE,
+            VALID_NAME,
+            VALID_BRAND,
+            VALID_CATEGORY,
+            VALID_PRICE,
+            VALID_STOCK,
+            VALID_DESCRIPTION
     );
     assertNotNull(product, "The product initialized with arguments must not be null");
   }
@@ -29,13 +37,13 @@ class ProductTest {
   @Test
   void productWithNegativeCodeShouldThrowAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    -12345,
-                    "Hammer Drill",
-                    "DeWalt",
-                    "Power Tools",
-                    159.99,
-                    25,
-                    "20V drill with lithium battery"
+                    -1,
+                    VALID_NAME,
+                    VALID_BRAND,
+                    VALID_CATEGORY,
+                    VALID_PRICE,
+                    VALID_STOCK,
+                    VALID_DESCRIPTION
             )
     );
   }
@@ -43,13 +51,13 @@ class ProductTest {
   @Test
   void productWithEmptyNameShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    12345,
+                    VALID_CODE,
                     "",
-                    "DeWalt",
-                    "Power Tools",
-                    159.99,
-                    25,
-                    "20V drill with lithium battery"
+                    VALID_BRAND,
+                    VALID_CATEGORY,
+                    VALID_PRICE,
+                    VALID_STOCK,
+                    VALID_DESCRIPTION
             )
     );
   }
@@ -57,13 +65,13 @@ class ProductTest {
   @Test
   void productWithEmptyBrandShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    12345,
-                    "Hammer Drill",
+                    VALID_CODE,
+                    VALID_NAME,
                     "",
-                    "Power Tools",
-                    159.99,
-                    25,
-                    "20V drill with lithium battery"
+                    VALID_CATEGORY,
+                    VALID_PRICE,
+                    VALID_STOCK,
+                    VALID_DESCRIPTION
             )
     );
   }
@@ -71,13 +79,13 @@ class ProductTest {
   @Test
   void productWithEmptyCategoryShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    12345,
-                    "Hammer Drill",
-                    "DeWalt",
+                    VALID_CODE,
+                    VALID_NAME,
+                    VALID_BRAND,
                     "",
-                    159.99,
-                    25,
-                    "20V drill with lithium battery"
+                    VALID_PRICE,
+                    VALID_STOCK,
+                    VALID_DESCRIPTION
             )
     );
   }
