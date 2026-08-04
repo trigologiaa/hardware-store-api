@@ -1,5 +1,10 @@
 package com.trigologiaa.hardwarestore.domain.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
 import org.jspecify.annotations.NonNull;
 import org.springframework.util.StringUtils;
 
@@ -9,7 +14,11 @@ import org.springframework.util.StringUtils;
  * <p>Contains all the essential details of a product, including its identification, classification,
  * pricing, and stock availability.
  */
+@Entity
+@Getter
 public class Product {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long code;
   private String name;
   private String brand;

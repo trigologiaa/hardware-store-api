@@ -1,5 +1,6 @@
 package com.trigologiaa.hardwarestore.domain.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -32,6 +33,13 @@ class ProductTest {
             VALID_DESCRIPTION
     );
     assertNotNull(product, "The product initialized with arguments must not be null");
+    assertEquals(VALID_CODE, product.getCode());
+    assertEquals(VALID_NAME, product.getName());
+    assertEquals(VALID_BRAND, product.getBrand());
+    assertEquals(VALID_CATEGORY, product.getCategory());
+    assertEquals(VALID_PRICE, product.getPrice());
+    assertEquals(VALID_STOCK, product.getStock());
+    assertEquals(VALID_DESCRIPTION, product.getDescription());
   }
 
   @Test
