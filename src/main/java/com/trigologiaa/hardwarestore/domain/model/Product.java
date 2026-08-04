@@ -110,7 +110,7 @@ public class Product {
   /**
    * Sets and validates the product category.
    *
-   * <p>Ensures that the assigned category is not blank or comopsed only of whitespaces.
+   * <p>Ensures that the assigned category is not blank or composed only of whitespaces.
    *
    * @param category the category to be assigned to this product
    * @throws IllegalArgumentException if the provided category is blank or null
