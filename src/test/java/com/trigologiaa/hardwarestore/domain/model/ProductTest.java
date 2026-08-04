@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class ProductTest {
-  private static final Integer VALID_CODE = 12345;
+  private static final Long VALID_CODE = 12345L;
   private static final String VALID_NAME = "Hammer Drill";
   private static final String VALID_BRAND = "DeWalt";
   private static final String VALID_CATEGORY = "Power Tools";
@@ -37,7 +37,7 @@ class ProductTest {
   @Test
   void productWithNegativeCodeShouldThrowAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    -1,
+                    -1L,
                     VALID_NAME,
                     VALID_BRAND,
                     VALID_CATEGORY,

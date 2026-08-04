@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
  * pricing, and stock availability.
  */
 public class Product {
-  private Integer code;
+  private Long code;
   private String name;
   private String brand;
   private String category;
@@ -36,7 +36,7 @@ public class Product {
    * @param description a brief description of the product features
    */
   public Product(
-          Integer code,
+          Long code,
           String name,
           String brand,
           String category,
@@ -61,7 +61,7 @@ public class Product {
    * @param code the code to be assigned to this product
    * @throws IllegalArgumentException if the code is negative
    */
-  private void setCode(@NonNull Integer code) {
+  private void setCode(@NonNull Long code) {
     if (code < 0) {
       throw new IllegalArgumentException("The product code must not be negative.");
     }
