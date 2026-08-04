@@ -49,7 +49,7 @@ public class Product {
     this.setBrand(brand);
     this.setCategory(category);
     this.setPrice(price);
-    this.stock = stock;
+    this.setStock(stock);
     this.description = description;
   }
 
@@ -126,5 +126,20 @@ public class Product {
       throw new IllegalArgumentException("The product price must not be empty.");
     }
     this.price = price;
+  }
+
+  /**
+   * Sets and validates the product stock.
+   *
+   * <p>Ensures that the assigned stock is a positive integer or zero.
+   *
+   * @param stock the stock quantity to be assigned to this product
+   * @throws IllegalArgumentException if the stock is null or negative
+   */
+  private void setStock(@NonNull Integer stock) {
+    if (stock < 0) {
+      throw new IllegalArgumentException("The product stock must not be empty.");
+    }
+    this.stock = stock;
   }
 }
