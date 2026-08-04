@@ -117,4 +117,18 @@ class ProductTest {
             )
     );
   }
+
+  @Test
+  void productWithEmptyDescriptionShouldThrownAnException() {
+    assertThrows(IllegalArgumentException.class, () -> new Product(
+                    VALID_CODE,
+                    VALID_NAME,
+                    VALID_BRAND,
+                    VALID_CATEGORY,
+                    VALID_PRICE,
+                    VALID_STOCK,
+                    ""
+            )
+    );
+  }
 }

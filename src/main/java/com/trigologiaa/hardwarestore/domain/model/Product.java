@@ -50,7 +50,7 @@ public class Product {
     this.setCategory(category);
     this.setPrice(price);
     this.setStock(stock);
-    this.description = description;
+    this.setDescription(description);
   }
 
   /**
@@ -123,7 +123,7 @@ public class Product {
    */
   private void setPrice(@NonNull Double price) {
     if (price < 0.0) {
-      throw new IllegalArgumentException("The product price must not be empty.");
+      throw new IllegalArgumentException("The product price must not be negative.");
     }
     this.price = price;
   }
@@ -138,8 +138,23 @@ public class Product {
    */
   private void setStock(@NonNull Integer stock) {
     if (stock < 0) {
-      throw new IllegalArgumentException("The product stock must not be empty.");
+      throw new IllegalArgumentException("The product stock must not be negative.");
     }
     this.stock = stock;
+  }
+
+  /**
+   * Sets and validates the product description.
+   *
+   * <p>Ensures that the assigned description is not blank or composed only of whitespaces.
+   *
+   * @param description the description to be assigned to this product
+   * @throws IllegalArgumentException if the provided description is blank
+   */
+  private void setDescription(@NonNull String description) {
+    if (!StringUtils.hasText(description)) {
+      throw new IllegalArgumentException("The product description must not be empty.");
+    }
+    this.description = description;
   }
 }
