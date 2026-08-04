@@ -19,7 +19,7 @@ import org.springframework.util.StringUtils;
 public class Product {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long code;
+  private Long id;
   private String name;
   private String brand;
   private String category;
@@ -36,7 +36,7 @@ public class Product {
   /**
    * Constructs a new {@code Product} with the specified details.
    *
-   * @param code        the unique identifier code for the product
+   * @param id          the unique identifier code for the product
    * @param name        the name of the product
    * @param brand       the brand of the product
    * @param category    the category classification of the product
@@ -45,7 +45,7 @@ public class Product {
    * @param description a brief description of the product features
    */
   public Product(
-          Long code,
+          Long id,
           String name,
           String brand,
           String category,
@@ -53,7 +53,7 @@ public class Product {
           Integer stock,
           String description
   ) {
-    this.setCode(code);
+    this.setId(id);
     this.setName(name);
     this.setBrand(brand);
     this.setCategory(category);
@@ -67,14 +67,14 @@ public class Product {
    *
    * <p>Ensures that the assigned code is a positive integer or zero
    *
-   * @param code the code to be assigned to this product
+   * @param id the code to be assigned to this product
    * @throws IllegalArgumentException if the code is negative
    */
-  private void setCode(@NonNull Long code) {
-    if (code < 0) {
+  private void setId(@NonNull Long id) {
+    if (id < 0) {
       throw new IllegalArgumentException("The product code must not be negative.");
     }
-    this.code = code;
+    this.id = id;
   }
 
   /**

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class ProductTest {
-  private static final Long VALID_CODE = 12345L;
+  private static final Long VALID_ID = 12345L;
   private static final String VALID_NAME = "Hammer Drill";
   private static final String VALID_BRAND = "DeWalt";
   private static final String VALID_CATEGORY = "Power Tools";
@@ -24,7 +24,7 @@ class ProductTest {
   @Test
   void productWithArgumentsShouldBeCreatedCorrectly() {
     Product product = new Product(
-            VALID_CODE,
+            VALID_ID,
             VALID_NAME,
             VALID_BRAND,
             VALID_CATEGORY,
@@ -33,7 +33,7 @@ class ProductTest {
             VALID_DESCRIPTION
     );
     assertNotNull(product, "The product initialized with arguments must not be null");
-    assertEquals(VALID_CODE, product.getCode());
+    assertEquals(VALID_ID, product.getId());
     assertEquals(VALID_NAME, product.getName());
     assertEquals(VALID_BRAND, product.getBrand());
     assertEquals(VALID_CATEGORY, product.getCategory());
@@ -59,7 +59,7 @@ class ProductTest {
   @Test
   void productWithEmptyNameShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    VALID_CODE,
+                    VALID_ID,
                     "",
                     VALID_BRAND,
                     VALID_CATEGORY,
@@ -73,7 +73,7 @@ class ProductTest {
   @Test
   void productWithEmptyBrandShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    VALID_CODE,
+                    VALID_ID,
                     VALID_NAME,
                     "",
                     VALID_CATEGORY,
@@ -87,7 +87,7 @@ class ProductTest {
   @Test
   void productWithEmptyCategoryShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    VALID_CODE,
+                    VALID_ID,
                     VALID_NAME,
                     VALID_BRAND,
                     "",
@@ -101,7 +101,7 @@ class ProductTest {
   @Test
   void productWithNegativePriceShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    VALID_CODE,
+                    VALID_ID,
                     VALID_NAME,
                     VALID_BRAND,
                     VALID_CATEGORY,
@@ -115,7 +115,7 @@ class ProductTest {
   @Test
   void productWithNegativeStockShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    VALID_CODE,
+                    VALID_ID,
                     VALID_NAME,
                     VALID_BRAND,
                     VALID_CATEGORY,
@@ -129,7 +129,7 @@ class ProductTest {
   @Test
   void productWithEmptyDescriptionShouldThrownAnException() {
     assertThrows(IllegalArgumentException.class, () -> new Product(
-                    VALID_CODE,
+                    VALID_ID,
                     VALID_NAME,
                     VALID_BRAND,
                     VALID_CATEGORY,
