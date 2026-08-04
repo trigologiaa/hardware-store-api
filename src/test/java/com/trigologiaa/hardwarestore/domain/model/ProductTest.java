@@ -89,4 +89,18 @@ class ProductTest {
             )
     );
   }
+
+  @Test
+  void productWithNegativePriceShouldThrownAnException() {
+    assertThrows(IllegalArgumentException.class, () -> new Product(
+                    VALID_CODE,
+                    VALID_NAME,
+                    VALID_BRAND,
+                    VALID_CATEGORY,
+                    -1.0,
+                    VALID_STOCK,
+                    VALID_DESCRIPTION
+            )
+    );
+  }
 }

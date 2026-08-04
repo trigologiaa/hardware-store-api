@@ -48,7 +48,7 @@ public class Product {
     this.setName(name);
     this.setBrand(brand);
     this.setCategory(category);
-    this.price = price;
+    this.setPrice(price);
     this.stock = stock;
     this.description = description;
   }
@@ -111,5 +111,20 @@ public class Product {
       throw new IllegalArgumentException("The product description must not be empty.");
     }
     this.category = category;
+  }
+
+  /**
+   * Sets and validates the product price.
+   *
+   * <p>Ensures that the assigned price is greater than zero.
+   *
+   * @param price the monetary price to be assigned to this product
+   * @throws IllegalArgumentException if the price is negative
+   */
+  private void setPrice(@NonNull Double price) {
+    if (price < 0.0) {
+      throw new IllegalArgumentException("The product price must not be empty.");
+    }
+    this.price = price;
   }
 }
